@@ -1,0 +1,14 @@
+[Unit]
+Description=Elastic Container
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+WorkingDirectory=/data/docker-compose/elastic-container
+ExecStart=-/data/docker-compose/elastic-container/elastic-container.sh start
+ExecStop=-/data/docker-compose/elastic-container/elastic-container.sh stop
+
+[Install]
+WantedBy=multi-user.target
